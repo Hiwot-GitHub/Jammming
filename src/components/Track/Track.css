@@ -1,0 +1,21 @@
+.track-area{
+    align-content: start;
+    
+}
+.title{
+    color: white;
+    font-size:x-small;
+    font-weight: 600;
+    margin-bottom: 0;
+    justify-self: start;
+    text-align: start;
+    
+}
+.artist{
+    color: whitesmoke;
+    font-size: xx-small;
+    margin-top: 0%;
+    justify-self: start;
+    text-align: start;
+}
+

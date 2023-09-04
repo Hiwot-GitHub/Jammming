@@ -1,0 +1,45 @@
+.search-result{
+    display: flex;
+    flex-direction: column;
+    width: 18rem;
+    height: 25rem;
+    background-color: #000058;
+    margin: 1rem;
+    padding: 0.6rem;
+  
+  }
+  
+ 
+  .track-display{
+    display: flex;
+    font-weight: lighter;
+    justify-content: space-between;
+    padding: 0.25rem;
+    
+  }
+.content-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.hr-line{
+    height: 0px;
+    border-bottom: #fcfcfc solid 1px;
+  }
+ 
+  h4{
+    color: white;
+    font-weight: bold;
+    align-self: start;
+    padding: none;
+    margin: 0;
+    
+  }
+  .sign-btn{
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 2rem;
+
+  }
+  

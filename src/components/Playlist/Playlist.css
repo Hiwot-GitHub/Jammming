@@ -1,0 +1,40 @@
+.play-list{
+    width: 14rem;
+    height: 25rem;
+    background-color: #000058;
+    display: flex;
+    flex-direction: column;
+    font-weight: lighter;
+    margin: 1rem;
+    padding: 0.6rem; 
+    
+}
+.playlist-name{
+    margin: 1rem;
+    
+}
+.play-list input{
+    background-color: transparent;
+    height: 2rem;
+    width: 12rem;
+    border-style: none;
+    border-bottom: #fcfcfc solid 1px;
+    outline: none;
+    caret-color:#fcfcfc;
+    color:#fcfcfc;
+    font-size: 1rem;
+    
+       
+}
+.playlist-btn button{
+    font-size: x-small;
+    font-weight: bold;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border-style: none;
+    background-color: #0000D1;
+    color: #fcfcfc;
+    margin-top: 0.6rem;
+
+}
