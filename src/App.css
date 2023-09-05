@@ -1,5 +1,10 @@
+body {
+  background-image: url('background_photo_desktop.jpg');
+  background-size: cover;
+}
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -50,7 +55,4 @@
   margin: 1rem;
   padding: 0.6rem;
 
-}
-.search-result .overlay {
-  background-color: rgba(250, 246, 246, 0.5);
 }
