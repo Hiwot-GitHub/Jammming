@@ -3,20 +3,20 @@ import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
 import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
+import Spotify from './util/Spotify';
 let store = [];
-
-const favorite = [{
-  id: 1,
-  title : "Almost Blue",
-  artist : "Chet Baker",
-  album: "No problem"},
-  {id: 2,title: "Sinnerman", artist: "Nina Simon", album:"unkown"},{id:3, title:"My favorite things", artist: "John Coltrane", album: "My favorite things"},
-{id:4, title:"A love supreme", artist: "John Coltrane", album: "My favorite things"}];
-
 
 function App (){
   const [playlist, setPlaylist] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
   const [playlistname, setPlaylistname] = useState('');
+
+  const search = term => {
+    Spotify.search(term).then(tracks => {
+      setSearchResult(tracks);
+      console.log(searchResult[0]);
+    });
+  }
   
   const renamingPlaylist = name => {
     setPlaylistname(name);
@@ -47,11 +47,11 @@ function App (){
 
     return (
     <div className="App">
-      <SearchBar />
+      <SearchBar onSearch={search}/>
       <div className='track-play-list'>
         <div className='search-result'>
                 <h4>Results</h4>
-               <Tracklist searchResult={favorite} add={addToPlaylist} btn={'+'}/>
+               <Tracklist searchResult={searchResult} add={addToPlaylist} btn={'+'}/>
         </div>
         <Playlist playlist={playlist} rename={renamingPlaylist} remove={removeFromPlaylist} save={handleSubmit}/>
       </div>
