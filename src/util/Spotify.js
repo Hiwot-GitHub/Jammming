@@ -53,6 +53,60 @@ const Spotify = {
               });
         
             return spotifyTracks;
-          }
+          },
+          
+          async savePlaylist(playlistName, tracksUri) {
+            if (!(playlistName && tracksUri)) return;
+        
+            // Get spotify user Id
+            let userId = await fetch("https://api.spotify.com/v1/me", {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            })
+              .then((response) => response.json())
+              .then((jsonResponse) => jsonResponse.id)
+              .catch((error) => {
+                console.log("User id Fetch error");
+                  });
+            // Create playlist
+    let playlistId = await fetch(
+      `https://api.spotify.com/v1/users/${userId}/playlists`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: playlistName,
+        }),
+        json: true,
+      }
+    )
+      .then((response) => response.json())
+      .then((jsonResponse) => jsonResponse.id)
+      .catch((error) => {
+        console.log("Create Playlist error");
+      });
+
+    await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        uris: tracksUri,
+      }),
+    })
+      .then((response) => {
+        console.log("Songs added to playlist");
+      })
+      .catch((error) => {
+        console.log("Fetch error while adding songs to the playlist");
+      });
+  },
+
 }
 export default Spotify;

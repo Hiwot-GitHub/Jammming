@@ -4,7 +4,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Tracklist from './components/Tracklist/Tracklist';
 import Playlist from './components/Playlist/Playlist';
 import Spotify from './util/Spotify';
-let store = [];
+//let store = [];
 
 function App (){
   const [playlist, setPlaylist] = useState([]);
@@ -35,7 +35,7 @@ function App (){
     })
   };
 
-  const handleSubmit = (event) => {
+ /* const handleSubmit = (event) => {
     event.preventDefault();
     let obj = {name : playlistname, tracks: playlist};
     store.push(obj);
@@ -43,6 +43,11 @@ function App (){
     setPlaylistname('');
     setPlaylist([]);
     
+  }*/
+
+  const savePlaylist = ()=> {
+    let tracksUri = playlist.map(track => track.uri);
+    Spotify.savePlaylist(playlistname, tracksUri);
   }
 
     return (
@@ -53,7 +58,7 @@ function App (){
                 <h4>Results</h4>
                <Tracklist searchResult={searchResult} add={addToPlaylist} btn={'+'}/>
         </div>
-        <Playlist playlist={playlist} rename={renamingPlaylist} remove={removeFromPlaylist} save={handleSubmit}/>
+        <Playlist playlist={playlist} rename={renamingPlaylist} remove={removeFromPlaylist} save={savePlaylist}/>
       </div>
       
     </div>
