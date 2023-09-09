@@ -11,11 +11,11 @@ function App (){
   const [searchResult, setSearchResult] = useState([]);
   const [playlistname, setPlaylistname] = useState('');
 
-  const search = term => {
-    Spotify.search(term).then(tracks => {
-      setSearchResult(tracks);
-      console.log(searchResult[0]);
-    });
+  async function search(term ) {
+    Spotify.getAccessToken();
+    let tracks = await Spotify.search(term);
+    setSearchResult(tracks);
+    
   }
   
   const renamingPlaylist = name => {
@@ -35,17 +35,7 @@ function App (){
     })
   };
 
- /* const handleSubmit = (event) => {
-    event.preventDefault();
-    let obj = {name : playlistname, tracks: playlist};
-    store.push(obj);
-    console.log(obj.name);
-    setPlaylistname('');
-    setPlaylist([]);
-    
-  }*/
-
-  const savePlaylist = ()=> {
+  const savePlaylist = () => {
     let tracksUri = playlist.map(track => track.uri);
     Spotify.savePlaylist(playlistname, tracksUri);
   }
