@@ -9,12 +9,19 @@ class SearchBar extends React.Component{
         };
         this.handleTermChange = this.handleTermChange.bind(this);
         this.handleTermSubmit = this.handleTermSubmit.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
 
     };
     handleTermChange(event) {
         this.setState({
           term: event.target.value
         })
+      }
+
+      handleKeyDown(event){
+        if (event.key === 'Enter'){
+           this.handleTermSubmit(event);
+        }
       }
       handleTermSubmit(event){
         this.props.onSearch(this.state.term);
@@ -25,7 +32,7 @@ class SearchBar extends React.Component{
     render(){
         return(
             <div className='searchBar-wrap'>
-                <input className='search-input' type='text' onChange={this.handleTermChange} />
+                <input className='search-input' type='text' onChange={this.handleTermChange} onKeyDown={this.handleKeyDown} />
                 <button className='search-btn' onClick={this.handleTermSubmit}>SEARCH</button>
                 
             </div>
