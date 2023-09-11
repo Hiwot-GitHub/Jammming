@@ -19,7 +19,7 @@ class SearchBar extends React.Component{
       }
 
       handleKeyDown(event){
-        if (event.key === 'Enter'){
+        if (event.key === 'Enter' && this.state.term){
            this.handleTermSubmit(event);
         }
       }
