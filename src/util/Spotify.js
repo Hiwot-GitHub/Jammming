@@ -28,7 +28,7 @@ const Spotify = {
             let spotifyTracks = fetch(
               `https://api.spotify.com/v1/search?type=track&q=${searchTerm}`,
               {
-                headers: { Authorization: `Bearer ${accessToken}}` },
+                headers: { Authorization: `Bearer ${accessToken}` },
               }
             )
               .then((response) => response.json())
