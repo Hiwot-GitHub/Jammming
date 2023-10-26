@@ -1,7 +1,7 @@
 //Spotify clientID and secret
 const clientID = '9e3636b610b947f680244524c4fd7006';
 //const secret = '0de276ea24114afeafc467fadc591179';
-const redirectURI = 'http://localhost:3000';
+const redirectURI = process.env.REACT_APP_SPOTIFY_REDIRECT_URI;
 let accessToken;
 
 const Spotify = {
